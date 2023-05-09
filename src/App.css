@@ -1,38 +1,57 @@
-.App {
-  text-align: center;
+body{
+  padding: 25px;
+  background-color: beige;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.comment-form{
+  background-color: lightblue;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+.comment-form button{
+  font-family: inherit;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 15px;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.comment-form button:hover{
+  background-color: rgb(200, 201, 202);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.comment-form label{
+  vertical-align: top;
+  min-width: 90px;
+  display: inline-block;
+}
+textarea{
+  resize: none;
+  height: 150px;
+}
+textarea,input{
+  width: 80%;
 }
 
-.App-link {
-  color: #61dafb;
+.comment {
+  border: solid 1px black;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-top: 15px;
+  background-color: lightsteelblue;
+}
+.comment > p:first-of-type{
+  font-style: italic;
+  display:flex;
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a{
+  text-decoration: none;
+  color: rgb(219, 165, 26);
+}
+a:hover{
+  background-color: rgb(219, 165, 26);
+  color: black;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import CommentForm from './CommentForm';
+import { DateTime } from 'luxon';
 
 export default function SinglePost() {
     const { postID } = useParams();
@@ -43,7 +44,7 @@ export default function SinglePost() {
             {post ? (
                 <div>
                     <h1>{post.title}</h1>
-                    <p>{post.date}</p>
+                    <p>{formatDate(post.date)}</p>
                     {post.content.split('\n\n').map((para, index) => (
                         <p key={index}>{para}</p>
                     ))}
@@ -51,13 +52,17 @@ export default function SinglePost() {
             ) : (
                 <h1>Loading</h1>
             )}
+            <h2>Comments</h2>
             <CommentForm getComments={getComments} />
             {comments.length ? (
                 <div>
                     {comments.map((comment) => {
                         return (
-                            <div key={comment._id}>
-                                <p>{comment.name}</p>
+                            <div className="comment" key={comment._id}>
+                                <p>
+                                    <span>{comment.name}</span>
+                                    <span>{formatDate(comment.date)}</span>
+                                </p>
                                 <p>{comment.content}</p>
                             </div>
                         );
@@ -70,4 +75,6 @@ export default function SinglePost() {
     );
 }
 
-// Add dummy content "How to train your cat" "Why you should have a cat", content will be lorem ipsum paragraphs, add styling
+function formatDate(date) {
+    return DateTime.fromISO(date).toLocaleString(DateTime.DATETIME_FULL);
+}

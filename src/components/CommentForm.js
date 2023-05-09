@@ -45,7 +45,8 @@ export default function CommentForm(props) {
     }
 
     return (
-        <form>
+        <form className="comment-form">
+            <p>Write a new comment</p>
             <p>
                 <label htmlFor="name">Name</label>
                 <input
