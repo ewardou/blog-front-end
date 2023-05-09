@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Posts() {
-    let [posts, setPosts] = useState([]);
+    let [posts, setPosts] = useState('');
 
     async function getPosts() {
         try {
@@ -23,16 +24,17 @@ function Posts() {
 
     return (
         <div>
-            {posts
-                ? posts.map((post) => {
-                      return (
-                          <div key={post._id}>
-                              <h1>{post.title}</h1>
-                              <p>{post.content}</p>
-                          </div>
-                      );
-                  })
-                : null}
+            {posts ? (
+                posts.map((post) => {
+                    return (
+                        <Link to={`${post._id}`} key={post._id}>
+                            <h1>{post.title}</h1>
+                        </Link>
+                    );
+                })
+            ) : (
+                <h1>Loading</h1>
+            )}
         </div>
     );
 }
