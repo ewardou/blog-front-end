@@ -16,7 +16,6 @@ export default function SinglePost() {
             );
             const json = await response.json();
             setPost(json);
-            document.querySelector('.post-content').innerHTML = json.content;
         } catch (e) {
             console.error(e);
         }
@@ -39,6 +38,11 @@ export default function SinglePost() {
         getComments();
     }, []);
 
+    useEffect(() => {
+        if (post.content) {
+            document.querySelector('.post-content').innerHTML = post.content;
+        }
+    }, [post]);
     return (
         <div>
             <Link to="/">Home</Link>
@@ -46,11 +50,11 @@ export default function SinglePost() {
                 <div>
                     <h1>{post.title}</h1>
                     <p>{formatDate(post.date)}</p>
-                    <div className="post-content"></div>
                 </div>
             ) : (
                 <h1>Loading</h1>
             )}
+            <div className="post-content"></div>
             <h2>Comments</h2>
             <CommentForm getComments={getComments} />
             {comments.length ? (
