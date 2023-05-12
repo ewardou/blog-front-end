@@ -8,7 +8,7 @@ function Posts() {
     async function getPosts() {
         try {
             const response = await fetch(
-                'https://blog-api-hs2t.onrender.com/posts'
+                'https://blog-api-hs2t.onrender.com/posts/public'
             );
             const json = await response.json();
             console.log(json);

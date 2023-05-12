@@ -16,6 +16,7 @@ export default function SinglePost() {
             );
             const json = await response.json();
             setPost(json);
+            document.querySelector('.post-content').innerHTML = json.content;
         } catch (e) {
             console.error(e);
         }
@@ -45,9 +46,7 @@ export default function SinglePost() {
                 <div>
                     <h1>{post.title}</h1>
                     <p>{formatDate(post.date)}</p>
-                    {post.content.split('\n\n').map((para, index) => (
-                        <p key={index}>{para}</p>
-                    ))}
+                    <div className="post-content"></div>
                 </div>
             ) : (
                 <h1>Loading</h1>
