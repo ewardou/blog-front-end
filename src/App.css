@@ -1,10 +1,19 @@
 body{
-  padding: 25px;
+  padding: 35px;
   background-color: beige;
+  background-image: url("../public/flying-cat.png"), url("../public/standing-cat.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top -15px left -15px, bottom right;
+  background-size: auto 180px, auto 300px;
+  display:grid;
+  place-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .comment-form{
-  background-color: lightblue;
+  background-color: rgba(173, 216, 230, 0.85);
   padding: 10px;
   border: 2px solid black;
   border-radius: 10px;
@@ -39,19 +48,47 @@ textarea,input{
   padding: 5px 10px;
   border-radius: 10px;
   margin-top: 15px;
-  background-color: lightsteelblue;
+  background-color: rgba(176, 196, 222, 0.85);
 }
 .comment > p:first-of-type{
   font-style: italic;
   display:flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+#root{
+  max-width: 750px;
 }
 
 a{
   text-decoration: none;
   color: rgb(219, 165, 26);
+  background-color: #eeeeeeda;
 }
 a:hover{
   background-color: rgb(219, 165, 26);
   color: black;
+}
+
+.posts > a{
+  height: 180px;
+  display: block;
+  max-width: 500px;
+  text-align: center;
+  background-color: rgba(255,255,255,0.8);
+  box-shadow: inset 0px -6px 5px -3px #00000073;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid black;
+}
+.post-content{
+  background-color: rgba(255,255,255,0.8);
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+@media (max-width: 450px) {
+  body{
+    background-size: auto 140px, auto 230px;
+  }
 }

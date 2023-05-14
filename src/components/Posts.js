@@ -23,12 +23,15 @@ function Posts() {
     }, []);
 
     return (
-        <div>
+        <div className="posts">
+            <h1>Eduardo's blog</h1>
             {posts ? (
                 posts.map((post) => {
+                    const div = createDiv(post.content);
                     return (
                         <Link to={`${post._id}`} key={post._id}>
                             <h1>{post.title}</h1>
+                            <div className="content">{div.textContent}</div>
                         </Link>
                     );
                 })
@@ -39,4 +42,10 @@ function Posts() {
     );
 }
 
+function createDiv(content) {
+    const div = document.createElement('div');
+    div.innerHTML = content;
+    console.log(div);
+    return div;
+}
 export default Posts;
